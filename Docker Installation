@@ -1,0 +1,43 @@
+Docker start
+**************** 
+>>Spin up an Ubuntu 20.04 EC2 instance
+>>choose the instace type t2.micro
+>>add the tag value as docker
+the security group is docker-sg
+add a rule
+all traffic and shource is anywhere for both ssh and all traffic
+chmod 400 docker.pem giving writing perission to docker.pem
+ whether we should use a root or non root
+sudo apt-get update
+ 
+>>to allow the apt to use the repository over http
+  sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+>>adding official GPG KEY
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+ for coomunity edition
+>>setup and update update the docker reposritory ,that need to be added to the docker environment
+echo \
+  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+>>sudo apt-get update
+sudo apt-get install docker ce docker-ce-cli containerd.io
+docker version
+ the socket files. it is setup in the /var/run/docker.sock
+the root has permission to access it, if you are running as a root suer you can access it.
+>>sudo cat /etc/group/
+in the out we will see docker
+we have to add the user into the docker group
+echo $USER
+sudo usermod -aG docker $USER
+sudo cat /etc/group/
+docker version
+exit and do SSH login
+now run docker version
+ 
+
+ 

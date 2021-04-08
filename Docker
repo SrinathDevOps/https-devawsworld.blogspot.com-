@@ -1,0 +1,34 @@
+Uploadind the website using Docker
+*********************************
+Steps to follow:
+Updating the yum<yum update>
+I installed docker< yum install -y docker>
+start the docker service< systemctl start docker>
+docker version checking<docker --version>
+docker info<docker info>
+pulling nginx image<docker pull nginx>
+checking docker images<docker images>
+checking containers<docker ps>
+
+run the existing container<docker start containerid>
+or run the new container<docker run -itd --name dubai nginx>
+check the container<docker ps -a>
+go to google download your realtime website temple
+
+Option 1:-
+after downloading to upload the zip to the local ,use sftp(simple file transfer protocal) and click on upload
+once it is uploaded check <ls -ltr>
+check the running container <doceker container ls> name is "dubai"
+copy the zip to the container<docker cp zipfilename.zip dubai:/user/share/nginx/html/>
+get into the container<docker exec -it dubai bash>
+install the unzip module if it is not there<apt update && apt install unzip>
+unzip the website file<unzip zipfilename.zip>
+get into that file <cd filename>
+go the url in the browser<publicip:90/index.html>
+
+Option2:-
+Inside the continer
+go to GIT repository and download the zip<git clone git_url>
+cd into the folder<cd filename>
+list the file<ls -ltr>
+go to the url in the browser<public ip:90/filename>
